@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= htmlWebpackPlugin.options.title %></title
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <!-- <img id="github-icon" alt="github"> -->
+    <h1>Simple Color Converter</h1>
+    <main class="converter">
+      <div class="converter__color-current" id="current-color-square"></div>
+      <div class="converter__input-fields">
+        <input class="converter__input-fields__color-input" type="text" name="color-input" id="color-input">
+        <div class="converter__input-fields__color-table">
+          <div class="converter__input-fields__color-table__labels">
+            <label class="converter__input-fields__color-table__labels__label" for="color-hex">Hex:</label>
+            <label class="converter__input-fields__color-table__labels__label" for="color-rgb">RGB:</label>
+            <label class="converter__input-fields__color-table__labels__label" for="color-hex">HSL:</label>
+          </div>
+          <div class="converter__input-fields__color-table__inputs">
+            <input class="converter__input-fields__color-table__inputs__input" type="text" name="color-hex" id="hex-display">
+            <input class="converter__input-fields__color-table__inputs__input" type="text" name="color-rgb" id="rgb-display">
+            <input class="converter__input-fields__color-table__inputs__input" type="text" name="color-hsl" id="hsl-display">
+          </div>
+          <div class="converter__input-fields__color-table__icons">
+            <img class="converter__input-fields__color-table__icons__icon" alt="clipboard icon">
+            <img class="converter__input-fields__color-table__icons__icon" alt="clipboard icon">
+            <img class="converter__input-fields__color-table__icons__icon" alt="clipboard icon">
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Made by <a href="https://github.com/davidk55">DavidK55</a>.</p>
+    </footer>
+  </body>
+</html>
