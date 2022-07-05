@@ -36,9 +36,11 @@ function getValuesOfHexcolor(hexcolor) {
   let hexValues = hexcolor.replace(/#/g, '');
   if (hexValues.length == 6) return hexValues.match(/.{1,2}/g);
   if (hexValues.length == 3)
-    return (
-      hexValues[0].repeat(2) + hexValues[1].repeat(2) + hexValues[2].repeat(2)
-    );
+    return [
+      hexValues[0].repeat(2),
+      hexValues[1].repeat(2),
+      hexValues[2].repeat(2),
+    ];
 }
 
 // Expects a correctly formatted HSL function as a string
