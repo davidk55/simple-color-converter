@@ -49,11 +49,6 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource'
       },
-      {
-        test: /test\.js/,
-        use: 'mocha-loader',
-        exclude: /node_modules/,
-      }
     ]
   },
   plugins: [
