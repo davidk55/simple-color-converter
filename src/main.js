@@ -1,13 +1,4 @@
 import './styles/main.scss';
-import clipboard_icon from './assets/clipboard.svg';
-//
-// Set clipboard icons
-const clipboard = document.getElementsByClassName(
-  'converter__input-fields__color-table__icons__icon'
-);
-for (let i = 0; i < clipboard.length; i++) {
-  clipboard[i].src = clipboard_icon;
-}
 
 // Get input data for js
 function getInputString() {
@@ -196,9 +187,9 @@ function insertColors(colorString, colorType) {
   document.querySelector('#current-color-square').style.backgroundColor = hex;
 
   // insert calculated values in the table
-  document.querySelector('#hex-display').value = hex;
-  document.querySelector('#rgb-display').value = rgb;
-  document.querySelector('#hsl-display').value = hsl;
+  document.querySelector('#hex-display').innerHTML = hex;
+  document.querySelector('#rgb-display').innerHTML = rgb;
+  document.querySelector('#hsl-display').innerHTML = hsl;
 }
 
 function applyColors() {
@@ -207,8 +198,50 @@ function applyColors() {
   insertColors(inputString, colorType);
 }
 
+// functions to copy a string to clipboard
+// source: https://www.30secondsofcode.org/articles/s/copy-text-to-clipboard-with-javascript
+const copyToClipboard = str => {
+  if (navigator && navigator.clipboard && navigator.clipboard.writeText)
+    return navigator.clipboard.writeText(str);
+  return Promise.reject('The Clipboard API is not available.');
+};
+
+function showCopiedBox(clipboard_button) {
+  setTimeout( () => {
+    clipboard_button.classList.add('active');
+    setTimeout(() => {
+      clipboard_button.classList.remove('active');
+    }, 1500);
+  })
+};
+
 // Listener
 let colorInput = document.querySelector('#color-input');
 colorInput.addEventListener('change', () => {
   applyColors();
 });
+
+document
+  .querySelector('#clipboard-button-hex')
+  .addEventListener('click', () => {
+    let hex = document.querySelector('#hex-display').innerHTML;
+    copyToClipboard(hex);
+    let hex_clipboard = document.querySelector('#clipboard-button-hex');
+    showCopiedBox(hex_clipboard);
+  });
+document
+  .querySelector('#clipboard-button-rgb')
+  .addEventListener('click', () => {
+    let rgb = document.querySelector('#rgb-display').innerHTML;
+    copyToClipboard(rgb);
+    let rgb_clipboard = document.querySelector('#clipboard-button-rgb');
+    showCopiedBox(rgb_clipboard);
+  });
+document
+  .querySelector('#clipboard-button-hsl')
+  .addEventListener('click', () => {
+    let hsl = document.querySelector('#hsl-display').innerHTML;
+    copyToClipboard(hsl);
+    let hsl_clipboard = document.querySelector('#clipboard-button-hsl');
+    showCopiedBox(hsl_clipboard);
+  });
