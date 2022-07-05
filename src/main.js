@@ -139,13 +139,17 @@ function hexToRgbValues(hexValues) {
 
 // Expects a correctly formatted colorString and correct colorType
 function evaluateHex(colorString, colorType) {
-  if (colorType == 0) return colorString;
   let hex = '#';
+  if (colorType == 0) {
+    let hexValues = getValuesOfHexcolor(colorString);
+    hex += hexValues[0] + hexValues[1] + hexValues[2];
+  }
   if (colorType == 1) {
     let rgbValues = getValuesOfCSSFunction(colorString);
     let hexValues = rgbToHexValues(rgbValues);
     hex += hexValues[0] + hexValues[1] + hexValues[2];
-  } else if (colorType == 2) {
+  }
+  if (colorType == 2) {
     let hslValues = getValuesOfCSSFunction(hslValues);
     let rgbValues = hslToRgbValues(colorString);
     let hexValues = rgbToHexValues(rgbValues);
