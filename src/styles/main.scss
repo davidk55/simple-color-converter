@@ -96,19 +96,31 @@ body {
             cursor: pointer;
             background-image: url('../assets/clipboard.svg');
             background-size: contain;
+            position: relative;
 
             &::before {
               content: 'Copied';
-              position: relative;
+              position: absolute;
               top: -50px;
               background-color: var(--creamy-white);
               padding: 0.5rem;
-              right: 0;
-              z-index: 1;
+              right: -30px;
               border-radius: 10px;
               color: var(--light-brown);
               font-size: 0.7rem;
               display: none;
+            }
+
+            &::after {
+              content: '';
+              position: absolute;
+              background-color: red;
+              padding: 0.2rem;
+              display: none;
+              transform: rotate(45deg);
+              top: -23px;
+              background-color: var(--creamy-white);
+              right: -2px;
             }
           }
         }
@@ -127,7 +139,8 @@ body {
       color: royalblue;
     }
   }
-  .active::before {
+  .active::before,
+  .active::after {
     display: revert;
   }
 
