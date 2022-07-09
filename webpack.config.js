@@ -55,7 +55,8 @@ module.exports = {
     new HtmlWebpackPlugin ({
       title: 'Simple Color Converter',
       filename: 'index.html',
-      template: 'src/template.html'
+      template: 'src/template.html',
+      favicon: './src/assets/paint-brush.svg'
     })
   ]
 }
