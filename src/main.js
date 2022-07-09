@@ -37,11 +37,12 @@ function getValuesOfHexcolor(hexcolor) {
 // Expects a correctly formatted HSL function as a string
 // source: https://www.rapidtables.com/convert/color/hsl-to-rgb.html
 function hslToRgbValues(hslValues) {
-  let c = 1 - Math.abs(2 * hslValues[2] - 1) * hslValues[1];
+  hslValues = hslValues.map(e => e/100);
+  let c = (1 - Math.abs(2 * hslValues[2] - 1)) * hslValues[1];
   let x = c * (1 - Math.abs(((hslValues[0] / 60) % 2) - 1));
   let m = hslValues[2] - c / 2;
   let r, g, b;
-  if (hslValues[0] > 0 && hslValues[0] < 60) {
+  if (hslValues[0] >= 0 && hslValues[0] < 60) {
     r = c;
     g = x;
     b = 0;
@@ -68,7 +69,8 @@ function hslToRgbValues(hslValues) {
   } else {
     throw 'H of HSL is not in range 0 < H < 360';
   }
-  return [(r + m) * 255, (g + m) * 255, (b + m) * 255];
+  console.log(Math.round((r + m) * 255))
+  return [Math.round((r + m) * 255), Math.round((g + m) * 255), Math.round((b + m) * 255)];
 }
 
 function rgbToHslValues(rgbValues) {
@@ -141,8 +143,8 @@ function evaluateHex(colorString, colorType) {
     hex += hexValues[0] + hexValues[1] + hexValues[2];
   }
   if (colorType == 2) {
-    let hslValues = getValuesOfCSSFunction(hslValues);
-    let rgbValues = hslToRgbValues(colorString);
+    let hslValues = getValuesOfCSSFunction(colorString);
+    let rgbValues = hslToRgbValues(hslValues);
     let hexValues = rgbToHexValues(rgbValues);
     hex += hexValues[0] + hexValues[1] + hexValues[2];
   }
