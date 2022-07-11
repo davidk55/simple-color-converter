@@ -37,7 +37,8 @@ function getValuesOfHexcolor(hexcolor) {
 // Expects a correctly formatted HSL function as a string
 // source: https://www.rapidtables.com/convert/color/hsl-to-rgb.html
 function hslToRgbValues(hslValues) {
-  hslValues = hslValues.map(e => e/100);
+  hslValues[1] = hslValues[1]/100;
+  hslValues[2] = hslValues[2]/100;
   let c = (1 - Math.abs(2 * hslValues[2] - 1)) * hslValues[1];
   let x = c * (1 - Math.abs(((hslValues[0] / 60) % 2) - 1));
   let m = hslValues[2] - c / 2;
