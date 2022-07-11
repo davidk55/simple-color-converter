@@ -190,9 +190,9 @@ function insertColors(colorString, colorType) {
   document.querySelector('#current-color-square').style.backgroundColor = hex;
 
   // insert calculated values in the table
-  document.querySelector('#hex-display').innerHTML = hex;
-  document.querySelector('#rgb-display').innerHTML = rgb;
-  document.querySelector('#hsl-display').innerHTML = hsl;
+  document.querySelector('#hex-display').innerText = hex;
+  document.querySelector('#rgb-display').innerText = rgb;
+  document.querySelector('#hsl-display').innerText = hsl;
 }
 
 function applyColors() {
@@ -227,7 +227,7 @@ colorInput.addEventListener('change', () => {
 document
   .querySelector('#clipboard-button-hex')
   .addEventListener('click', () => {
-    let hex = document.querySelector('#hex-display').innerHTML;
+    let hex = document.querySelector('#hex-display').innerText;
     copyToClipboard(hex);
     let hex_clipboard = document.querySelector('#clipboard-button-hex');
     showCopiedBox(hex_clipboard);
@@ -235,7 +235,7 @@ document
 document
   .querySelector('#clipboard-button-rgb')
   .addEventListener('click', () => {
-    let rgb = document.querySelector('#rgb-display').innerHTML;
+    let rgb = document.querySelector('#rgb-display').innerText;
     copyToClipboard(rgb);
     let rgb_clipboard = document.querySelector('#clipboard-button-rgb');
     showCopiedBox(rgb_clipboard);
@@ -243,7 +243,7 @@ document
 document
   .querySelector('#clipboard-button-hsl')
   .addEventListener('click', () => {
-    let hsl = document.querySelector('#hsl-display').innerHTML;
+    let hsl = document.querySelector('#hsl-display').innerText;
     copyToClipboard(hsl);
     let hsl_clipboard = document.querySelector('#clipboard-button-hsl');
     showCopiedBox(hsl_clipboard);
