@@ -218,6 +218,15 @@ function showCopiedBox(clipboard_button) {
   })
 };
 
+(() => {
+  let colorInput = document.querySelector('#color-input');
+  if (colorInput.value.length != 0) {
+    document.querySelector('#current-color-square').style.backgroundColor = colorInput.value;
+    applyColors();
+  }
+  
+})();
+
 // Listener
 let colorInput = document.querySelector('#color-input');
 colorInput.addEventListener('change', () => {
