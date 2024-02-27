@@ -6,12 +6,6 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, 'src/main.js')
   },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name][contenthash].js',
-    clean: true,
-    assetModuleFilename: '[name][ext]'
-  },
   devtool: 'source-map',
   devServer: {
     static: {
@@ -20,8 +14,6 @@ module.exports = {
     port: 3000,
     open: true,
     hot: true,
-    compress: true,
-    historyApiFallback: true,
     watchFiles: ['src/**/*']
   },
   module: {
@@ -52,7 +44,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin ({
+    new HtmlWebpackPlugin({
       title: 'Simple Color Converter',
       filename: 'index.html',
       template: 'src/template.html',

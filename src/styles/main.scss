@@ -114,7 +114,6 @@ body {
             &::after {
               content: '';
               position: absolute;
-              background-color: red;
               padding: 0.2rem;
               display: none;
               transform: rotate(45deg);
@@ -143,7 +142,6 @@ body {
   .active::after {
     display: revert;
   }
-
 
   @media (max-width: 600px) {
     .converter__input-fields__color-table {
